@@ -10,13 +10,10 @@ def shuffle(seq):
     10
     """
     seq = str(seq)
-    mid = len(seq)//2
-    new_seq = sum(zip(seq[:mid], reversed(seq[mid:])), ())
-
-    # Zip doesn't account for Odd length
-    if len(seq) % 2 != 0: 
-        new_seq += (seq[mid],)
-
+    new_seq = [
+        seq[i // 2] if i % 2 == 0 else seq[-(i // 2 + 1)]
+        for i in range(len(seq))
+    ]
     return int("".join(new_seq))
     
 if __name__ == "__main__":
